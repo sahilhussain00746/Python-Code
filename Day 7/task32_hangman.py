@@ -1,61 +1,11 @@
-hangman_pic= [
-    '''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''',
-    '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========''',
-    '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''',
-    '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''',
-    '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''',
-    '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-========='''
-]
-
-
-
-
 import random
-word = ["lion", "tiger", "camel"]
+from task33_hangman_art import hangman_pic, hangman_logo
+from task34_hangmanword import hangman_words
 
-random_word = random.choice(word) #creating random word 
+for line in hangman_logo:
+    print(line)
+    
+random_word = random.choice(hangman_words) #creating random word 
 print(random_word)
 
 placeholder = "" #creating empty space
@@ -69,8 +19,12 @@ game_over = False
 correct_letter = [] # creating a new list to store letter
 
 while not game_over:  #running the loop while it is false
+    
     guess = input("Enter a letter: ").lower() #taking input from user
-
+    
+    if guess in correct_letter:
+        print(f"You have already guessed the letter {guess}")
+        
     display = ""
     for letter in random_word:
         if letter == guess:
@@ -80,9 +34,13 @@ while not game_over:  #running the loop while it is false
             display += letter
         else:
             display += "_"
-        
+    
+    print(display)
+    
     if guess not in correct_letter:
         live -= 1
+        print(f"You choose the wrong word {guess}")
+        print(hangman_pic[live])
         if live == 0:
             game_over = True
             print("You lose")
@@ -90,6 +48,3 @@ while not game_over:  #running the loop while it is false
     if "_" not in display:
         game_over = True
         print("You win")      
-        
-        
-    print(hangman_pic[live])
