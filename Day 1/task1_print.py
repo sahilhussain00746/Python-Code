@@ -1,6 +1,6 @@
-print("Hello World!") # if i miss ("") giving this it will show syntax error
+print("Hello World!") # if i miss ("") then this it will show syntax error
 
-#you can print multiple string by using "\n"
+#you can print multiple string by using "\n" in a single print function
 print("This is Another Line")
 print("Hello World!\nHello World!")
 
