@@ -36,6 +36,7 @@ def prepare_coffee(order, change):
     report["water"] -= drink["water"]
     report["milk"] -= drink["milk"]
     report["coffee"] -= drink["coffee"]
+    report["profit"] += drink["money"]
 
     print(f"\nYour order is ready ☕\n{art.ready}")
     print(
@@ -43,7 +44,7 @@ def prepare_coffee(order, change):
         f"Water: {drink['water']}ml\n"
         f"Milk: {drink['milk']}ml\n"
         f"Coffee: {drink['coffee']}g\n"
-        f"Cost: ${drink['money']}"
+        f"Cost: ${drink['money']}\n"
     )
 
     if change > 0:
@@ -86,6 +87,7 @@ while is_on:
             f"Water: {report['water']}ml\n"
             f"Milk: {report['milk']}ml\n"
             f"Coffee: {report['coffee']}g"
+            f"Profit: ${report['profit']}"
         )
         continue
 
